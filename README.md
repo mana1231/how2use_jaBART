@@ -20,6 +20,9 @@
 pythonのver.3.8を利用する
 ```
 conda create -n [name] python=3.8
+```
+作成した仮想環境の実行
+```
 conda activate [name]
 ```
 作成した環境の中でjupyterに対応できるように以下のコマンドをターミナルにて実施
