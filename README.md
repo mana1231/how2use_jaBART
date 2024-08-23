@@ -49,7 +49,7 @@ tar xvf jumanpp-2.0.0-rc3.tar.xz
 これにより得られたjumanpp-2.0.0-rc3ディレクトリから訂正する箇所
 - jumanpp-2.0.0-rc3/libs/catch.hpp <6609>
 -> ```char FatalConditionHandler::altStackMem[32768] = {};```に変更
-- jumanpp-2.0.0-rc3/src/util/serialization_test.cc  ~top~
+- jumanpp-2.0.0-rc3/src/util/serialization_test.cc  <top>
 -> ```#include <limits>```を追加
 
 buildしていく。'where'のところの名前は任意でOK
@@ -65,7 +65,7 @@ make install -j 4
 
 [ここ](https://github.com/utanaka2000/fairseq/blob/japanese_bart_pretrained_model/jaBART_preprocess.py )からjaBART_preprocess.py持ってくる。
 
-jaBART_preprocess.pyを開いて、~20~をちょっと訂正、jumanppのパスを指定しておく。
+jaBART_preprocess.pyを開いて、<20>をちょっと訂正、jumanppのパスを指定しておく。
 
 -> ```jumanpp = Juman(command = 'jumanpp-2.0.0-rc3/bld/where/bin/jumanpp')```
 
@@ -78,6 +78,6 @@ tar -zxvf japanese_bart_large_2.0.tar.gz
 # その他
 fairseq/fairseq/data/indexed_dataset.py に存在する```np.float```が使えない時は```float```に修正する
 
-自分は~98~と~301~で訂正した
+自分は<98>と<301>で訂正した
 
 また、finetuneを実行していく際の、```--restore-file```があると思うが、```content/japanese_bart_large_2.0/bart_model.pt```のように```content```というのが必要
