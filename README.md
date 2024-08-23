@@ -47,7 +47,7 @@ wget https://github.com/ku-nlp/jumanpp/releases/download/v2.0.0-rc3/jumanpp-2.0.
 tar xvf jumanpp-2.0.0-rc3.tar.xz
 ```
 これにより得られたjumanpp-2.0.0-rc3ディレクトリから訂正する箇所
-- jumanpp-2.0.0-rc3/libs/catch.hpp ~6609~
+- jumanpp-2.0.0-rc3/libs/catch.hpp <6609>
 -> ```char FatalConditionHandler::altStackMem[32768] = {};```に変更
 - jumanpp-2.0.0-rc3/src/util/serialization_test.cc  ~top~
 -> ```#include <limits>```を追加
