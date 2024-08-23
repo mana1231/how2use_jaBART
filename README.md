@@ -33,7 +33,7 @@ conda install jupyter
 ### その他pipでインストールするものシリーズ
 zenhan, pyknp, sentencepiece, tensorboardX(optional)
 ```
-pip install zenhan, pyknp, sentencepiece, tensorboardX
+pip install zenhan pyknp sentencepiece tensorboardX
 ```
 
 ### 京大日本語BARTを使うためのfairseqの準備
