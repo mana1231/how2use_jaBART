@@ -4,7 +4,7 @@
 
 - [初めに](#初めに)
 - [requirement](#requirement)
-- [preprocess](#preprocess)
+- [その他](#その他)
 
 # 初めに
 京都大学が提供している日本語BARTが実装できない人のための空間
