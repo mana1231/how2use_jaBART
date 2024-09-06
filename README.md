@@ -105,6 +105,7 @@ fairseq-generate dataset_dir --path large2_model_save/checkpoint_best.pt --task 
 ```
 
 - 後処理
+
 pred file
 ```
 grep ^H large2_ja2ja | LC_ALL=C sort -V | cut -f 3- | sed 's/<<unk>>/<unk>/g' | sed 's/▁//g' > large2_ja2ja.pred
