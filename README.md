@@ -84,3 +84,16 @@ fairseq/fairseq/data/indexed_dataset.py に存在する```np.float```が使え�
 自分は<98>と<301>で訂正した
 
 また、finetuneを実行していく際の、```--restore-file```があると思うが、```content/japanese_bart_large_2.0/bart_model.pt```のように```content```というのが必要
+
+```
+fairseq-train dataset --arch bart_large --restore-file content/japanese_bart_large_2.0/bart_model.pt \
+    --save-dir large2_model_save --tensorboard-logdir large2_tensorboard \
+    --task translation_from_pretrained_bart --source-lang src --target-lang tgt \
+    --criterion label_smoothed_cross_entropy --label-smoothing 0.2 --dataset-impl raw \
+    --optimizer adam --adam-eps 1e-06 --adam-betas '{0.9, 0.98}' --lr-scheduler polynomial_decay --lr 5e-05 --min-lr -1 \
+    --warmup-updates 2500 --total-num-update 10000 --weight-decay 0.3 \
+    --max-tokens 1024 --update-freq 2 --save-interval -1 --no-epoch-checkpoints --log-format simple --log-interval 2 \
+    --reset-optimizer --reset-meters --reset-dataloader --reset-lr-scheduler  --save-interval-updates 5000 \
+    --ddp-backend no_c10d --max-update 20000 \
+    --encoder-normalize-before --decoder-normalize-before --langs ja --prepend-bos --patience 5
+```
