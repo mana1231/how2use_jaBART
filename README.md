@@ -85,6 +85,7 @@ fairseq/fairseq/data/indexed_dataset.py に存在する```np.float```が使え�
 
 また、finetuneを実行していく際の、```--restore-file```があると思うが、```content/japanese_bart_large_2.0/bart_model.pt```のように```content```というのが必要
 
+- finetune
 ```
 fairseq-train dataset --arch bart_large --restore-file content/japanese_bart_large_2.0/bart_model.pt \
     --save-dir large2_model_save --tensorboard-logdir large2_tensorboard \
@@ -97,3 +98,23 @@ fairseq-train dataset --arch bart_large --restore-file content/japanese_bart_lar
     --ddp-backend no_c10d --max-update 20000 \
     --encoder-normalize-before --decoder-normalize-before --langs ja --prepend-bos --patience 5
 ```
+- generate
+```
+fairseq-generate dataset_dir --path large2_model_save/checkpoint_best.pt --task translation_from_pretrained_bart \
+    --dataset-impl raw --gen-subset test -s src -t tgt --max-sentences 64 --langs ja --prepend-bos > large2_ja2ja
+```
+
+- 後処理
+pred file
+```
+grep ^H large2_ja2ja | LC_ALL=C sort -V | cut -f 3- | sed 's/<<unk>>/<unk>/g' | sed 's/▁//g' > large2_ja2ja.pred
+```
+src file
+```
+grep ^S large2_ja2ja | LC_ALL=C sort -V | cut -f 2- | sed 's/<<unk>>/<unk>/g' | sed 's/▁//g' > large2_ja2ja.src
+```
+tgt file
+```
+grep ^T large2_ja2ja | LC_ALL=C sort -V | cut -f 2- | sed 's/<<unk>>/<unk>/g' | sed 's/▁//g' > large2_ja2ja.tgt
+```
+
